@@ -70,7 +70,8 @@ public class StoryController {
 	}
 
 	@GetMapping(path = { "/stories" })
-	public List<StoryModel> getStories() throws IOException {
+	public List<StoryModel> getStories() {
+		logger.info("inside stories");
 		final List<StoryModel> stories = imageRepository.findAll();
 		for (StoryModel img : stories) {
 			img.setImageByte(decompressBytes(img.getImageByte()));
